@@ -1,0 +1,8 @@
+{
+  "name": "nodex-studio-graphql-api-requester",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}
