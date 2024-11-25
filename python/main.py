@@ -45,7 +45,7 @@ def send_graphql_request(endpoint, token, query, variables=None):
 
 if __name__ == "__main__":
     secret_key = SECRET
-    graphql_endpoint = "https://http.hub.nodecross.io/api/graphql"
+    graphql_endpoint = "https://http.hub.nodecross.io/v1/api/graphql"
     graphql_query = GRAPHQL_QUERY
 
     try:

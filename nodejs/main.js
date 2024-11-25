@@ -43,7 +43,7 @@ async function sendGraphqlRequest(endpoint, token, query, variables = {}) {
 
 (async () => {
   const secretKey = SECRET;
-  const graphqlEndpoint = "https://http.hub.nodecross.io/api/graphql";
+  const graphqlEndpoint = "https://http.hub.nodecross.io/v1/api/graphql";
   const graphqlQuery = GRAPHQL_QUERY;
 
   try {
