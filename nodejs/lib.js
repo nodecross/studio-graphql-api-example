@@ -1,19 +1,9 @@
 const jwt = require("jsonwebtoken");
 
-const API_CLIENT_ID = "<PASTE API CLIENT ID>";
-const SECRET = "<PASTE SECRET KEY>";
-const GRAPHQL_QUERY = `
-query {
-    projects {
-        id
-    }
-}
-`;
-
-function generateJwt(secretKey, payload = {}) {
+function generateJwt(apiClientId, secretKey, payload = {}) {
   const now = Math.floor(Date.now() / 1000);
   payload.exp = now + 60 * 60;
-  payload.api_client_id = API_CLIENT_ID;
+  payload.api_client_id = apiClientId;
 
   return jwt.sign(payload, secretKey, { algorithm: "HS256" });
 }
@@ -41,13 +31,11 @@ async function sendGraphqlRequest(endpoint, token, query, variables = {}) {
   return response.json();
 }
 
-(async () => {
-  const secretKey = SECRET;
+async function generateJwtAndSendRequest(apiClientId, secret, graphqlQuery) {
   const graphqlEndpoint = "https://http.hub.nodecross.io/v1/api/graphql";
-  const graphqlQuery = GRAPHQL_QUERY;
 
   try {
-    const jwtToken = generateJwt(secretKey);
+    const jwtToken = generateJwt(apiClientId, secret);
     const response = await sendGraphqlRequest(
       graphqlEndpoint,
       jwtToken,
@@ -59,4 +47,8 @@ async function sendGraphqlRequest(endpoint, token, query, variables = {}) {
   } catch (error) {
     console.error("Error:", error.message);
   }
-})();
+}
+
+module.exports = {
+  generateJwtAndSendRequest,
+};

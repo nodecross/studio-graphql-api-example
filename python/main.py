@@ -3,7 +3,7 @@ import requests
 from datetime import datetime, timedelta, timezone
 
 API_CLIENT_ID = "<PASTE API CLIENT ID>"
-SECRET = "<PASTE SECRET KEY>"
+SECRET = "<PASTE SECRET>"
 GRAPHQL_QUERY = """
 query {
     projects {

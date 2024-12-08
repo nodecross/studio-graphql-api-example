@@ -33,3 +33,12 @@ Install the required packages:
 cd node
 npm install
 ```
+
+### Usage
+1. Write your API Client ID and Secret in `key.js`.
+2. Run the script you need, for example:
+```bash
+node scripts/projects.js
+```
+
+Make sure to include any required IDs in the script before running it.
