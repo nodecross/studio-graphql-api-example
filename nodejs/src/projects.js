@@ -1,5 +1,5 @@
-const { generateJwtAndSendRequest } = require("../lib");
-const { apiClientId, secret } = require("../key");
+const { generateJwtAndSendRequest } = require("./_lib");
+const { apiClientId, secret } = require("./_key");
 
 const GRAPHQL_QUERY = `
 query {
