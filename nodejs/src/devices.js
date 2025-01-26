@@ -1,7 +1,7 @@
 const { generateJwtAndSendRequest } = require("./_lib");
 const { apiClientId, secret } = require("./_key");
 
-const GRAPHQL_QUERY_TEMPLATE = `
+const GRAPHQL_QUERY = `
 query ($after: String) {
     devices(
         projectIds: [ "PLEASE ENTER YOUR PROJECT IDS HERE" ],
@@ -51,7 +51,7 @@ async function fetchAllDevices(apiClientId, secret) {
     const response = await generateJwtAndSendRequest(
       apiClientId,
       secret,
-      GRAPHQL_QUERY_TEMPLATE,
+      GRAPHQL_QUERY,
       variables
     );
 

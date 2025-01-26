@@ -1,7 +1,7 @@
 from _key import API_CLIENT_ID, SECRET
 from _lib import generate_jwt_and_send_request
 
-GRAPHQL_QUERY_TEMPLATE = """
+GRAPHQL_QUERY = """
 query ($after: String) {
     devices(
         projectIds: [ "PLEASE ENTER YOUR PROJECT IDS HERE" ],
@@ -50,7 +50,7 @@ def fetch_all_devices(api_client_id, secret):
         variables = {"after": after}
 
         response = generate_jwt_and_send_request(
-            api_client_id, secret, GRAPHQL_QUERY_TEMPLATE, variables
+            api_client_id, secret, GRAPHQL_QUERY, variables
         )
 
         devices_data = response.get("data", {}).get("devices", {})
