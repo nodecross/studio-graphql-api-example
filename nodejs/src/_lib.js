@@ -8,7 +8,12 @@ function generateJwt(apiClientId, secretKey, payload = {}) {
   return jwt.sign(payload, secretKey, { algorithm: "HS256" });
 }
 
-async function sendGraphqlRequest(endpoint, token, query, variables = {}) {
+async function sendGraphqlRequest(
+  endpoint,
+  token,
+  query,
+  variables = undefined
+) {
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -31,7 +36,12 @@ async function sendGraphqlRequest(endpoint, token, query, variables = {}) {
   return response.json();
 }
 
-async function generateJwtAndSendRequest(apiClientId, secret, graphqlQuery) {
+async function generateJwtAndSendRequest(
+  apiClientId,
+  secret,
+  graphqlQuery,
+  variables = undefined
+) {
   const graphqlEndpoint = "https://http.hub.nodecross.io/v1/api/graphql";
 
   try {
@@ -39,11 +49,11 @@ async function generateJwtAndSendRequest(apiClientId, secret, graphqlQuery) {
     const response = await sendGraphqlRequest(
       graphqlEndpoint,
       jwtToken,
-      graphqlQuery
+      graphqlQuery,
+      variables
     );
 
-    console.log("Response:");
-    console.dir(response, { depth: null });
+    return response;
   } catch (error) {
     console.error("Error:", error.message);
   }

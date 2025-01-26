@@ -9,4 +9,11 @@ query {
 }
 `;
 
-generateJwtAndSendRequest(apiClientId, secret, GRAPHQL_QUERY);
+(async () => {
+  const response = await generateJwtAndSendRequest(
+    apiClientId,
+    secret,
+    GRAPHQL_QUERY
+  );
+  console.log(JSON.stringify(response));
+})();
