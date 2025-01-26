@@ -9,4 +9,5 @@ query {
 }
 """
 
-generate_jwt_and_send_request(API_CLIENT_ID, SECRET, GRAPHQL_QUERY)
+response = generate_jwt_and_send_request(API_CLIENT_ID, SECRET, GRAPHQL_QUERY)
+print(response)
