@@ -33,7 +33,9 @@ def send_graphql_request(endpoint, token, query, variables=None):
     return response.json()
 
 
-def generate_jwt_and_send_request(api_client_id, secret, graphql_query):
+def generate_jwt_and_send_request(
+    api_client_id, secret, graphql_query, variables=None
+):
     graphql_endpoint = "https://http.hub.nodecross.io/v1/api/graphql"
 
     try:
@@ -43,9 +45,10 @@ def generate_jwt_and_send_request(api_client_id, secret, graphql_query):
             graphql_endpoint,
             jwt_token,
             graphql_query,
+            variables,
         )
 
-        print("Response:", response)
+        return response
 
     except Exception as e:
         print("Error:", e)
