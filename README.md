@@ -39,7 +39,7 @@ Make sure to include any required IDs in the script before running it.
 Install the required packages:
 
 ```bash
-cd node
+cd nodejs
 npm install
 ```
 

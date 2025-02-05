@@ -23,12 +23,8 @@ query ($after: String) {
                     deviceTagKey {
                         id
                         name
-                        columnOrder
                     }
-                    deviceTagValue {
-                        id
-                        name
-                    }
+                    deviceTagValue
                 }
             }
             cursor
@@ -42,7 +38,7 @@ query ($after: String) {
 `;
 
 async function fetchAllDevices(apiClientId, secret) {
-  let after = {};
+  let after;
   const allDevices = [];
 
   while (true) {
@@ -67,10 +63,7 @@ async function fetchAllDevices(apiClientId, secret) {
       break;
     }
 
-    after = {
-      id: pageInfo.endCursor,
-      createdAt: edges[edges.length - 1].node.createdAt,
-    };
+    after = pageInfo.endCursor;
   }
 
   return allDevices;
