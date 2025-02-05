@@ -23,12 +23,8 @@ query ($after: String) {
                         deviceTagKey {
                             id
                             name
-                            columnOrder
                         }
-                        deviceTagValue {
-                            id
-                            name
-                        }
+                        deviceTagValue
                 }
             }
             cursor
@@ -43,7 +39,7 @@ query ($after: String) {
 
 
 def fetch_all_devices(api_client_id, secret):
-    after = {}
+    after = None
     all_devices = []
 
     while True:
@@ -63,10 +59,7 @@ def fetch_all_devices(api_client_id, secret):
         if not page_info.get("hasNextPage"):
             break
 
-        after = {
-            "id": page_info.get("endCursor"),
-            "createdAt": edges[-1]["node"]["createdAt"],
-        }
+        after = page_info.get("endCursor")
 
     return all_devices
 
