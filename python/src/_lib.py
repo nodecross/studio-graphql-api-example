@@ -36,7 +36,7 @@ def send_graphql_request(endpoint, token, query, variables=None):
 def generate_jwt_and_send_request(
     api_client_id, secret, graphql_query, variables=None
 ):
-    graphql_endpoint = "https://api.sandbox.nodecross.app/v1/public/graphql"
+    graphql_endpoint = "https://api.nodecross.app/v1/public/graphql"
 
     try:
         jwt_token = generate_jwt(api_client_id, secret)
