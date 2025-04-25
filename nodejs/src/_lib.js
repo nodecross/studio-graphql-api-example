@@ -42,7 +42,7 @@ async function generateJwtAndSendRequest(
   graphqlQuery,
   variables = undefined
 ) {
-  const graphqlEndpoint = "https://http.hub.nodecross.io/v1/api/graphql";
+  const graphqlEndpoint = "https://api.sandbox.nodecross.app/v1/public/graphql";
 
   try {
     const jwtToken = generateJwt(apiClientId, secret);
