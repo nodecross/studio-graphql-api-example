@@ -4,7 +4,7 @@ const { apiClientId, secret } = require("./_key");
 const GRAPHQL_QUERY = `
 query ($after: String) {
     devices(
-        projectIds: [ "PLEASE ENTER YOUR PROJECT IDS HERE" ],
+        projectId: "PLEASE ENTER YOUR PROJECT ID HERE",
         after: $after
     ) {
         edges {
@@ -18,7 +18,6 @@ query ($after: String) {
                 projectId
                 createdAt
                 deviceTags {
-                    id
                     deviceId
                     deviceTagKey {
                         id

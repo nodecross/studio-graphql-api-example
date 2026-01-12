@@ -4,7 +4,7 @@ from _lib import generate_jwt_and_send_request
 GRAPHQL_QUERY = """
 query ($after: String) {
     devices(
-        projectIds: [ "PLEASE ENTER YOUR PROJECT IDS HERE" ],
+        projectId: "PLEASE ENTER YOUR PROJECT ID HERE",
         after: $after
     )  {
         edges {
@@ -18,13 +18,12 @@ query ($after: String) {
                 projectId
                 createdAt
                 deviceTags {
-                    id
-                        deviceId
-                        deviceTagKey {
-                            id
-                            name
-                        }
-                        deviceTagValue
+                    deviceId
+                    deviceTagKey {
+                        id
+                        name
+                    }
+                    deviceTagValue
                 }
             }
             cursor
